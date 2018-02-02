@@ -26,26 +26,38 @@ var DOMstrings={
 
     //Global APP CONTROLLER
     var controller = (function(budgetCtrl, UICtrl) {
-      var DOM =UICtrl.getDOMstrings();
+      var setupEventListeners =function(){
+          var DOM =UICtrl.getDOMstrings();
+        //event listeners
+        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+        document.addEventListener('keypress', function(event) {
+
+          if (event.keyCode === 13) {
+            ctrlAddItem();
+
+          }
+        });
+
+
+      }
+
       var ctrlAddItem = function() {
 
         // get input data ..after click
         var input = UICtrl.getInput();
-        console.log(input);
+        
 
         // add item to budget controller...
 
         //Add UI too..display on UI
 
-      }
+      };
+return {
+  init: function(){
+    console.log('Application has started.');
+    setupEventListeners();
+  }
+};
 
-      //event listeners
-      document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
-      document.addEventListener('keypress', function(event) {
-
-        if (event.keyCode === 13) {
-          ctrlAddItem();
-
-        }
-      });
     })(budgetController, UIController);
+controller.init();
