@@ -69,10 +69,10 @@ var UIController = (function () {
     };
 
     return {
-        getinput: function () {
+        getInput:function () {
             return {
                 type: document.querySelector(DOMstrings.inputType).value, // will inc either exp
-                description: documnet.querySelector(DOMstrings.inputDescription).value,
+                description: document.querySelector(DOMstrings.inputDescription).value,
                 value: document.querySelector(DOMstrings.inputValue).value
             };
         },
@@ -107,7 +107,7 @@ var UIController = (function () {
             newHtml = newHtml.replace('%value%', obj.value);
 
             //Insert the HTML into DOM
-            documnet.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
         },
         clearFields: function () {
@@ -116,13 +116,13 @@ var UIController = (function () {
             fields = document.querySelectorAll(DOMstrings.inputDescription + ',' + DOMstrings.inputValue);
 
             fieldsArr = Array.prototype.slice.call(fields);
-            filedsArr.forEach(function (current, index, array) {
+            fieldsArr.forEach(function (current, index, array) {
                 current.value = "";
 
             });
             fieldsArr[0].focus();
         },
-        getDOMstrings: function () {
+        getDOMstrings: function() {
             return DOMstrings;
         }
     };
